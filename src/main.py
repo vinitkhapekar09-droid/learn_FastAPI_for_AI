@@ -37,3 +37,7 @@ async def root():
 async def chat(request: ChatRequest):
     response_text = ai_platform.chat(request.prompt)
     return ChatResponse(response=response_text)
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
