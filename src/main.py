@@ -3,10 +3,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from .ai.gemini import Gemini
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 app = FastAPI()
 
 
@@ -34,7 +30,7 @@ ai_platform = Gemini(api_key=gemini_api_key, system_prompt=system_prompt)
 
 @app.get("/")
 async def root():
-    return {"message": "API is working!"}
+    return {"message": "API is working!", "version": "1.0"}
 
 
 @app.post("/chat", response_model=ChatResponse)
